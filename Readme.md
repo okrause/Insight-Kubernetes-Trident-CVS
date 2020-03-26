@@ -1,4 +1,4 @@
-# Enable stateful workloads on Kubernetes on GCP with NetApp Cloud Volumes and Trident CSI
+# Enable stateful workloads on Kubernetes on public clouds with NetApp Cloud Volumes and Trident CSI
 
 ### Present CVS and CVO
 ### Present CSI provisioner Trident 
@@ -35,9 +35,9 @@ kubectl get pvc nfs-shared
 Demo:
 ```bash
 # Using snapshots
-# Pre-work: Create snapshot storageclass. Need to be done once per cluster
-bat snapshot-storageclass.yaml
-kubectl apply -f snapshot-storageclass.yaml
+# Pre-work: Create snapshotclass. Need to be done once per cluster
+bat snapshotclass.yaml
+kubectl apply -f snapshotclass.yaml
 # Create snapshot of PVC nfs-shared
 kubectl get pvc nfs-shared
 bat nfs-pvc-shared-snap01.yaml
@@ -106,6 +106,3 @@ kubectl apply -f database-test.yaml
 ** As time machine: Messed all data up (e.g ransom ware)? Warp you data back in time to a good state
 * Cloning
 ** instantly create up to date r/w copies of big data sets. Think CI/CD, DEV/QA
-
-* NKS plug
-* Links and references

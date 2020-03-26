@@ -1,9 +1,8 @@
-apiVersion: snapshot.storage.k8s.io/v1alpha1
+apiVersion: snapshot.storage.k8s.io/v1beta1
 kind: VolumeSnapshot
 metadata:
   name: nfs-shared-snap01
 spec:
-  snapshotClassName: csi-snapclass
+  volumeSnapshotClassName: csi-snapclass
   source:
-    name: nfs-shared
-    kind: PersistentVolumeClaim
+    persistentVolumeClaimName: nfs-shared

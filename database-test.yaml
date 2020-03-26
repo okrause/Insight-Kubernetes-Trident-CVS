@@ -47,21 +47,17 @@ spec:
         persistentVolumeClaim:
           claimName: nfs-shared
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: database-pvc-clone
-  # this is the old way to clone
-  # annotations:
-  #   trident.netapp.io/cloneFromPVC: database-pvc
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: cvs-extreme
   resources:
     requests:
       storage: 1Ti
-  storageClassName: cvs-extreme
-  # this is the CSI way to clone
   dataSource:
       name: database-snapshot
       kind: VolumeSnapshot
