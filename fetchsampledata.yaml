@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fetchsampledata
+spec:
+  containers:
+  - name: fetchsampledata
+    image: alpine/git
+    command: ['/bin/sh', '-c']
+    args: ['cd /data; git clone https://github.com/datacharmer/test_db.git']
+    volumeMounts:
+      - name: nfs-persistent-storage
+        mountPath: /data
+  volumes:
+    - name: nfs-persistent-storage
+      persistentVolumeClaim:
+        claimName: nfs-shared
+  restartPolicy: Never
